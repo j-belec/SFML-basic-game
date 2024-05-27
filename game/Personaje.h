@@ -26,6 +26,7 @@ public:
 	sf::FloatRect getBounds() const override;
 	void increaseSpeed(int speed);
 	void hited();
+	void shoot(float x, float y);
 };
 
 

@@ -4,6 +4,7 @@
 #include "Personaje.h"
 #include "Enemy.h"
 #include "PowerUp.h"
+#include "Proyectile.h"
 
 //en gral se hace una clase al personaje y otra al jugador, en donde van a estar las estadisticas y las vidas por ej
 
@@ -43,6 +44,8 @@ int main()
     PowerUp powerUp;
     powerUp.respawn();
 
+    Proyectile pro;
+
 
     int puntos = 0;
     int vidas = 3;
@@ -81,6 +84,10 @@ int main()
             }
         }
 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            pro.fire(200, 200);
+        }
+
         if (timer > 0) {
             timer--;
         }
@@ -112,6 +119,7 @@ int main()
         window.draw(background); //el fondo tiene q ir  siempre primero, sino tapa lo otro
         window.draw(player);
         window.draw(enemy);
+        window.draw(pro);
         if (timer == 0) {
             window.draw(powerUp);
         }

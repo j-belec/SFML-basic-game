@@ -1,4 +1,5 @@
 #include "Personaje.h"
+#include "Proyectile.h"
 
 //maquina de estado
 //enum class PersonajeState {
@@ -98,6 +99,10 @@ void Personaje::update() {
         break;
     }
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        shoot(_sprite.getPosition().x, _sprite.getPosition().y);
+    }
+
     //para q no se salga de la pantalla, se hace si o si antes de dibujar no desps
     if (_sprite.getPosition().x < 0) {
         _sprite.setPosition(0, _sprite.getPosition().y);
@@ -126,4 +131,10 @@ void Personaje::increaseSpeed(int speed)
 {
     _speed.x = _speed.x + speed;
     _speed.y = _speed.y + speed;
+}
+
+void Personaje::shoot(float x, float y)
+{
+    Proyectile pro;
+    pro.fire(x, y);
 }
