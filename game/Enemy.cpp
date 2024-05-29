@@ -4,12 +4,13 @@
 Enemy::Enemy() {
 	_texture.loadFromFile("enemy.png");
 	_sprite.setTexture(_texture);
+	_sprite.setPosition({ 200,100 });
 }
 
 void Enemy::respawn()
 {
-	_sprite.setPosition(std::rand()%600, std::rand() % 200);
-	_newPosition = { std::rand() % 700 + _sprite.getGlobalBounds().width, std::rand() % 500 + _sprite.getGlobalBounds().height };
+	//_sprite.setPosition(std::rand()%600, std::rand() % 200);
+	//_newPosition = { std::rand() % 700 + _sprite.getGlobalBounds().width, std::rand() % 500 + _sprite.getGlobalBounds().height };
 	//_timeRespawn = 60 * 5;
 }
 
@@ -20,7 +21,12 @@ sf::FloatRect Enemy::getBounds() const
 
 void Enemy::youDamaged()
 {
-	respawn();
+	//respawn();
+}
+
+void Enemy::die()
+{
+	_sprite.setPosition({ -100, -100 });
 }
 
 void Enemy::draw(sf::RenderTarget& target, sf::RenderStates states) const {
@@ -28,14 +34,14 @@ void Enemy::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 }
 
 void Enemy::update() {
-	_timeRespawn--;
+	//_timeRespawn--;
 	//if (_timeRespawn < 0) {
 	//	//respawn();
 	//	//_timeRespawn = 60 * 5; 
 	//	_newPosition = { std::rand() % 700 + _sprite.getGlobalBounds().width, std::rand() % 500 + _sprite.getGlobalBounds().height };
 	//}
 
-	if (_newPosition.x > _sprite.getPosition().x) {
+	/*if (_newPosition.x > _sprite.getPosition().x) {
 		_sprite.move(5, 0);
 	}
 	if (_newPosition.x < _sprite.getPosition().x) {
@@ -46,9 +52,9 @@ void Enemy::update() {
 	}
 	if (_newPosition.y < _sprite.getPosition().y) {
 		_sprite.move(0, -5);
-	}
+	}*/
 
-	if (std::abs(_newPosition.x - _sprite.getPosition().x) < 5 && std::abs(_newPosition.y - _sprite.getPosition().y) < 5) {
+	/*if (std::abs(_newPosition.x - _sprite.getPosition().x) < 5 && std::abs(_newPosition.y - _sprite.getPosition().y) < 5) {
 		_newPosition = { std::rand() % 700 + _sprite.getGlobalBounds().width, std::rand() % 500 + _sprite.getGlobalBounds().height };
-	}
+	}*/
 }

@@ -137,12 +137,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Personaje.cpp" />
     <ClCompile Include="PowerUp.cpp" />
+    <ClCompile Include="Proyectile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="PowerUp.h" />
+    <ClInclude Include="Proyectile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

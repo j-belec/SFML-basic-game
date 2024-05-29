@@ -13,6 +13,7 @@ Personaje::Personaje() {
     //_speed = 5;
     //_sprite.getTextureRect({ 660,0,40,50 }); //coordenada en x en la img, en y, ancho de mi frame, alto
     _frame = 0;
+    _sprite.setPosition({ 375, 500 });
     //_sprite.setOrigin(_sprite.getGlobalBounds().width / 2, _sprite.getGlobalBounds().height / 2); //tomo el origen desde la mitad en X y en Y del sprite, pongo el axis en la mitad del sprite //si o si el origen se hace desps de establecer el rect
 }
 
@@ -126,4 +127,9 @@ void Personaje::increaseSpeed(int speed)
 {
     _speed.x = _speed.x + speed;
     _speed.y = _speed.y + speed;
+}
+
+sf::Vector2f Personaje::getCoordinates()
+{
+    return _sprite.getPosition();
 }

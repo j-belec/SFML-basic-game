@@ -4,6 +4,7 @@
 #include "Personaje.h"
 #include "Enemy.h"
 #include "PowerUp.h"
+#include "Proyectile.h"
 
 //en gral se hace una clase al personaje y otra al jugador, en donde van a estar las estadisticas y las vidas por ej
 
@@ -43,6 +44,8 @@ int main()
     PowerUp powerUp;
     powerUp.respawn();
 
+    Proyectile proyectile;
+
 
     int puntos = 0;
     int vidas = 3;
@@ -69,6 +72,7 @@ int main()
             player.cmd();
             player.update();
             enemy.update();
+            proyectile.update();
         }
         else {
             textRestart.setString("Presione ESPACIO para continuar");
@@ -103,6 +107,15 @@ int main()
             vidas--;
         }
 
+        if (enemy.isCollision(proyectile)) {
+            enemy.die();
+            proyectile.impact();
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            proyectile.fire(player.getCoordinates());
+        }
+
         text.setString("puntos: " + std::to_string(puntos));//texto  //to_string porq es un numero puntos
         vidasText.setString("vidas: " + std::to_string(vidas));
 
@@ -112,6 +125,7 @@ int main()
         window.draw(background); //el fondo tiene q ir  siempre primero, sino tapa lo otro
         window.draw(player);
         window.draw(enemy);
+        window.draw(proyectile);
         if (timer == 0) {
             window.draw(powerUp);
         }
